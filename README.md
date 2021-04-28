@@ -6,8 +6,8 @@ Both languages provide the end user the opportunity to utilize six fundamental s
 
 To Use: 
 
-    Python:
+    Python: update readme to include the order of functions to use 
     
-    R:
+    R: update readme to include the order of functions to use 
     
     
