@@ -1,6 +1,12 @@
 #Purpose: Combining P-values methodology
 #Author: Breya McGlown
 #Math Master's Thesis
+"""
+    Functions within this module allow for multiple p values
+    to be defined within each method below
+    Method options include: Fisher, Pearson, Ed, Stouffer, George, Tippett
+"""
+__version__ = "0.0.1"
 
 import pandas as pd
 import numpy as np
