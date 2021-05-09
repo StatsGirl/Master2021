@@ -22,13 +22,13 @@ require(utils)
 #' @param infile Path to the input file
 #' @return Functions within this class allow for multiple p values
 #' @export
-myClass <- function(x){
+PickMethod <- function(x){
     "Functions within this class allow for multiple p values
     to be defined within each method below
     Method options include: Fisher, Pearson, Ed, Stouffer, George, Tippett"
 
     self.method<- x
-    structure(class = "myClass", list(
+    structure(class = "PickMethod", list(
         #methods
         #FishersMethod
         
