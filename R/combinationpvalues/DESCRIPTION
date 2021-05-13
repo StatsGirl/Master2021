@@ -1,18 +1,21 @@
 Package: combinationpvalues
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Combination of Independent P-Values
 Version: 0.1.0
 Authors@R: c(
     person("Breya", "McGlown", email = "bswlker2@memphis.edu", role = c("cre","aut")))
-URL: https://github.com/StatsGirl/Master2021/tree/main/R/combinationpvalues
+URL: https://github.com/StatsGirl/Master2021/tree/main/R
 BugReports: https://github.com/StatsGirl/Master2021/issues
-Description: Package provides usage for 6 fundamental statistics for combination of independent p-values
-License: MIT
+Description: Package provides usage for 6 fundamental statistics for combination of independent p-values.
+License: MIT + file LICENSE
 Depends:
     R (>= 3.5.0)
 Imports:
     chi,
     utils
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

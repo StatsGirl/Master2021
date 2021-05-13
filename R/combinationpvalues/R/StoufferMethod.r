@@ -2,7 +2,7 @@
 #'
 #' @description #' Combination p-value method that uses Stouffer statistic
 #' Summation i=1 to n inverse CDF of N(0,1)(pi) where p equals p-value
-#' 
+#'
 #' @param x #' InfinitePs
 #'
 #' @return Combined P-value
@@ -10,10 +10,11 @@
 #' Output <- InfinitePs(0.1,0.3,.7)
 #' Final <- StoufferMethod(Output)
 #' @export
-#' @importFrom dplyr "%>%"
-#' 
+#' @importFrom qnorm "%>%"
+#' @importFrom stats "%>%"
+#'
+#'
 StoufferMethod = function(x){
-            if (self.method == "Stouffer"){
             k <- 1
             Len<- length(x)
             temp <-vector("list",Len)
@@ -25,4 +26,3 @@ StoufferMethod = function(x){
             output <- temp1
             return(output)
             }
-        }

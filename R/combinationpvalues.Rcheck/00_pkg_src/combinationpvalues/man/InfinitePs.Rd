@@ -7,9 +7,7 @@
 InfinitePs(x, ...)
 }
 \arguments{
-\item{x}{#' Input n p-values  n = 2,3,...,k}
-
-\item{...}{#list of p values}
+\item{(x)}{#' Input n p-values  n = 2,3,...,k}
 }
 \value{
 List of p-values

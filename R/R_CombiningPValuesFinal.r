@@ -7,7 +7,7 @@
 #install.packages("utils" , repo = "https://lib.ugent.be/CRAN/")
 #BiocManager::install("EmpiricalBrownsMethod")
 library(chi)
-#library(metap)
+library(metap)
 library(EmpiricalBrownsMethod)
 require(utils)
 

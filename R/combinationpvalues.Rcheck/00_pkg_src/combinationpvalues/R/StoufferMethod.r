@@ -1,24 +1,24 @@
-#' @title PearsonsMethod
+#' @title StoufferMethod
 #'
-#' @description #' Combination p-value method that uses George statistic
-#' Summation i=1 to n log(pi/(1-pi)) where p equals p-value
+#' @description #' Combination p-value method that uses Stouffer statistic
+#' Summation i=1 to n inverse CDF of N(0,1)(pi) where p equals p-value
 #'
 #' @param x #' InfinitePs
 #'
 #' @return Combined P-value
 #' @examples
 #' Output <- InfinitePs(0.1,0.3,.7)
-#' Final <- GeorgeMethod(Output)
+#' Final <- StoufferMethod(Output)
 #' @export
-#' @importFrom dplyr "%>%"
+#' @importFrom("stats","qnorm")
 #'
-
-GeorgeMethod = function(x) {
+#'
+StoufferMethod = function(x){
             k <- 1
             Len<- length(x)
             temp <-vector("list",Len)
             for (i in x) {
-            temp[[k]]<- log(i/(1-i))
+            temp[[k]]<- qnorm(i) #inverse CDF
             k <- k + 1
             }
             temp1 <- Reduce("+",temp)
