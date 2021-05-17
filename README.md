@@ -11,7 +11,3 @@ To Use:
     R: update readme to include the order of functions to use 
     
 
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/StatsGirl/Master2021/workflows/R-CMD-check/badge.svg)](https://github.com/StatsGirl/Master2021/actions)
-<!-- badges: end -->
-    
