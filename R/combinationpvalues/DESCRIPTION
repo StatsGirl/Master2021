@@ -6,7 +6,7 @@ Authors@R: c(
     person("Breya", "McGlown", email = "bswlker2@memphis.edu", role = c("cre","aut")))
 URL: https://github.com/StatsGirl/Master2021/tree/main/R
 BugReports: https://github.com/StatsGirl/Master2021/issues
-Description: Package provides usage for 6 fundamental statistics for combination of independent p-values.
+Description: Six fundamental statistics for combination of independent p-values. All methods used can referenced here: Heard & Rubin-Delanchy (2017) <arXiv:arXiv:1707.06897>
 License: MIT + file LICENSE
 Depends:
     R (>= 3.5.0)
