@@ -31,7 +31,7 @@ PickMethod <- function(x){
     structure(class = "PickMethod", list(
         #methods
         #FishersMethod
-        
+
 #' Infinite Ps
 #'
 #' Input n p-values
@@ -42,7 +42,7 @@ PickMethod <- function(x){
 #' @export
         InfinitePs = function(x,...){
             kwargs<-list(...)
-            return(c(x,kwargs))     
+            return(c(x,kwargs))
             },
 
 #' Fishers Method
@@ -219,7 +219,7 @@ my_object <- myClass("Stouffer")
     #sigma <- sample(1:10,1)
     List <- list(10,12,15,18,20) #sample size
     PvalsFromPaper <- list(0.585,0.76,0.365,0.905,0.08,0.265,0.405,0.76,0.1,0.25,0.185,0.115,0.525,0.035,0.65,0.035,0.075,0.01,0.205,0.43,0.52,0.435,0.12)
-    
+
     #my_object <- myClass("Tippett")
     for (x in List){
         Various <- rt(x, x-1)
@@ -231,10 +231,11 @@ my_object <- myClass("Stouffer")
         print(Final)
         #SignOrNot = A.DetermineSig(Final)
     }
-    
-    #Testing new Paper Sheng and Cheng 
-    my_object <- myClass("Stouffer")
-    Final <- my_object$StoufferMethod(PvalsFromPaper)
+
+    #Testing new Paper Sheng and Cheng
+    input <- read.csv(file = '~/Desktop/Thesis2021/DataSets/metap_beckerp.csv')
+    my_object <- PickMethod("Stouffer")
+    Final <- my_object$StoufferMethod(input)
     print(Final)
 
     my_object <- myClass("Fisher")
@@ -242,6 +243,6 @@ my_object <- myClass("Stouffer")
     print(Final)
     #Data dataframes from the EmpricialBrownsMethod package
     print(try(data(package = "metap") ))
-    
+
 
 
