@@ -1,2 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("stats", "qnorm")
+importFrom("stats", "qnorm", "dbeta", "dchisq", "dnorm")

@@ -44,9 +44,20 @@ test_that("test whether InfinitePs inputs are within range of 0 to 1 inclusive",
   expect_condition(output)
 })
 
-## Test whether one of the six functions return one p value only
+## Test whether one of the six functions return one test statistic value only
 test_that("Test whether one of the six functions return one p value only",
           {
-            output <- StoufferMethod(c(0.1,0.4,0.02))
+            input <- InfinitePs(0.1,0.4,0.02)
+            output <- StoufferMethod(input)
+            expect_length(output, 1)
+          })
+
+## Test whether the final combined p value should return only one value
+test_that("Test whether the final combined p value should return only one value",
+          {
+            input <- InfinitePs(0.016,0.067, 0.25,  0.405, 0.871)
+            Fisher <- FishersMethod(input)
+            output <- CombinedPValueMethod(Fisher,"Fisher") #return 0.014522139680083129
+            #print(output)
             expect_length(output, 1)
           })

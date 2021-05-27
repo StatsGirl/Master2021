@@ -8,15 +8,14 @@
 """
 __version__ = "0.0.1"
 
-import pandas as pd
 import numpy as np
 import copy
-import statistics as st
-import scipy
 from scipy.stats import norm
 import math as mt
-from scipy.stats import chisquare
 from scipy.stats import t
+from scipy.stats import chi2
+from scipy.stats import gamma
+from scipy.stats import beta
 
 class CountPs:
     """
@@ -125,14 +124,42 @@ class CountPs:
 
         return output
 
+    def CombinedPvalue(self,output):
+        """
+        Returns the p value of the combined pvalues based on the 
+        method selected
+        """
+        self.n = len(self.output)
+
+        if self.method == 'Tippett':
+            self.output = output
+            output = beta.pdf(output,a = 1, b = self.n) #ST is Beta(1,n)
+        elif self.method == 'Stouffer':
+            self.output = output
+            output = norm.pdf(output,scale = self.n) #SS is N(0,n)
+        elif self.method == 'George':
+            self.output = output
+            output = gamma.pdf(output,a = self.n) #SG is Gamma(x,n)
+        elif self.method == 'Ed':
+            self.output = output
+            output = gamma.pdf(output,a = self.n) #SE is Gamma(x,n)
+        elif self.method == 'Pearson':
+            self.output = output
+            output = chi2.pdf(output,2*self.n) #SP is Chi-square df=2n
+        else:
+            self.output = output
+            output = chi2.pdf(output,2*self.n) #SF is Chi-square df=2n
+        
+        return output
+
 
 if __name__ == "__main__":
  
-    A = CountPs('Stouffer') #Fisher, Pearson, Ed, Stouffer, George, Tippett
+    A = CountPs('Tippett') #Fisher, Pearson, Ed, Stouffer, George, Tippett
     Output = A.InfinitePs(0.1,.3,.7)
-    Final = A.StoufferMethod(Output)
-    SignOrNot = A.DetermineSig(Final)
-    print(Final)
+    Final = A.TippettMethod(Output)
+    SignOrNot = A.CombinedPvalue(Final)
+    print(Final, SignOrNot)
 
     #Test
     #random generator 10,12,15,18,20 N(mu,sigma^2) various values of mu and sigma^2
@@ -147,7 +174,7 @@ if __name__ == "__main__":
         #Get P values and combine
         Final = A.StoufferMethod(Output[0])
         #print(Final)
-        SignOrNot = A.DetermineSig(Final)
+        SignOrNot = A.CombinedPvalue(Final)
 
     #Get P values and Combine
 
@@ -163,7 +190,7 @@ if __name__ == "__main__":
         #Get P values and combine
         Final = A.StoufferMethod(Output[0])
         print(Final)
-        SignOrNot = A.DetermineSig(Final)
+        SignOrNot = A.CombinedPvalue(Final)
 
     #Testing functionality based on P values provided by Cheng and Sheng paper
     

@@ -2,12 +2,8 @@
 #Author: Breya McGlown
 #Math Master's Thesis
 
-#install.packages('metap')
-#install.packages("metap", repo = "https://CRAN.R-project.org/package=metap ")
-#install.packages("utils" , repo = "https://lib.ugent.be/CRAN/")
-#BiocManager::install("EmpiricalBrownsMethod")
+
 library(chi)
-library(metap)
 library(EmpiricalBrownsMethod)
 require(utils)
 
@@ -50,7 +46,7 @@ PickMethod <- function(x){
 #' Combination p-value method that uses Fishers statistic
 #' Summation i=1 to n log of pi where p equals p-value
 #' input is InfinitePs
-#' output is combined p-value
+#' output is test statistic
 #'
 #' @param infile Path to the input file
 #' @return Combination p-value using Fishers method
@@ -99,7 +95,7 @@ PickMethod <- function(x){
 #' Combination p-value method that uses George statistic
 #' Summation i=1 to n log(pi/(1-pi)) where p equals p-value
 #' input is InfinitePs
-#' output is combined p-value
+#' output is test statistic
 #'
 #' @param infile Path to the input file
 #' @return Combination p-value using George method
@@ -124,7 +120,7 @@ PickMethod <- function(x){
 #' Combination p-value method that uses Edgington statistic
 #' Summation i=1 to n pi where p equals p-value
 #' input is InfinitePs
-#' output is combined p-value
+#' output is test statistic
 #'
 #' @param infile Path to the input file
 #' @return Combination p-value using Edgington method
@@ -149,7 +145,7 @@ PickMethod <- function(x){
 #' Combination p-value method that uses Stouffer statistic
 #' Summation i=1 to n inverse CDF of N(0,1)(pi) where p equals p-value
 #' input is InfinitePs
-#' output is combined p-value
+#' output is test statistic
 #'
 #' @param infile Path to the input file
 #' @return Combination p-value using Stouffer method
@@ -174,7 +170,7 @@ PickMethod <- function(x){
 #' Combination p-value method that uses Tippett statistic
 #' min(p1,...,pn), n= 2,3,...,k where p equals p-value
 #' input is InfinitePs
-#' output is combined p-value
+#' output is test statistic
 #'
 #' @param infile Path to the input file
 #' @return Combination p-value using Tippett method
@@ -186,7 +182,44 @@ PickMethod <- function(x){
             output <- temp
             return(output)
             }
+        },
+
+#' CombinedPValue Method
+#'
+#' Return the combined pvalue
+#' output is combined p-value
+#'
+#' @param infile Path to the input file
+#' @return Combination p-value using Tippett method
+#' @export
+#CombinedPValue
+    CombinedPValue = function(x){
+        n <- Output
+        if (self.method == "Tippett"){
+            output <- dbeta(x, shape1 = 1, shape2 = n)
+            return(output)
         }
+        elif (self.method == "George"){
+            output <- dnorm(x,sd=n)
+            return(output)
+        }
+        elif (self.method == "Pearson"){
+            output <- qchisq(x,2*n)
+            return(output)
+        }
+        elif (self.method == "Ed"){
+            output <- dnorm(x,sd=n)
+            return(output)
+        }
+        elif (self.method == "Stouffer"){
+            output <- dnorm(x,sd=n)
+            return(output)
+        }
+        elif (self.method == "Fisher"){
+            output <- qchisq(x,2*n)
+            return(output)
+        }
+    }
     ))
 }
 
@@ -242,7 +275,7 @@ my_object <- myClass("Stouffer")
     Final <- my_object$FishersMethod(PvalsFromPaper)
     print(Final)
     #Data dataframes from the EmpricialBrownsMethod package
-    print(try(data(package = "metap") ))
+    #print(try(data(package = "metap") ))
 
 
 

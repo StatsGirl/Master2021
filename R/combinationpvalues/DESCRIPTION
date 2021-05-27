@@ -1,12 +1,12 @@
 Package: combinationpvalues
 Type: Package
 Title: Combination of Independent P-Values
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Breya", "McGlown", email = "bswlker2@memphis.edu", role = c("cre","aut")))
 URL: https://github.com/StatsGirl/Master2021/tree/main/R
 BugReports: https://github.com/StatsGirl/Master2021/issues
-Description: Six fundamental statistics for combination of independent p-values. All methods used can referenced here: Heard & Rubin-Delanchy (2017) <arXiv:arXiv:1707.06897>
+Description: Provides access to six fundamental statistics that can be used for the purpose of combination p-values. All methods used can referenced here: Heard & Rubin-Delanchy (2017) <arXiv:1707.06897>.
 License: MIT + file LICENSE
 Depends:
     R (>= 3.5.0)

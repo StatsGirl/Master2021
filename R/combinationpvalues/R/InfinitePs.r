@@ -13,5 +13,10 @@
 
 InfinitePs = function(x,...){
     kwargs<-list(...)
-    return(c(x,kwargs))
-    }
+    pos <- 1
+    envir = as.environment(pos)
+    output <- (c(x,kwargs))
+    assign("output",output, envir = envir)
+    return(output)
+}
+
