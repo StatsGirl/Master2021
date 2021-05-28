@@ -6,7 +6,7 @@
     to be defined within each method below
     Method options include: Fisher, Pearson, Ed, Stouffer, George, Tippett
 """
-__version__ = "0.0.1"
+__version__ = "0.1.1"
 
 import numpy as np
 import copy
@@ -33,6 +33,7 @@ class CountPs:
         enter p values into args parameter
         """
         if self.method == self.method:
+            self.N = list(args)
             pass
         return list(args)
 
@@ -129,7 +130,7 @@ class CountPs:
         Returns the p value of the combined pvalues based on the 
         method selected
         """
-        self.n = len(self.output)
+        self.n = len(self.N)
 
         if self.method == 'Tippett':
             self.output = output
@@ -159,7 +160,7 @@ if __name__ == "__main__":
     Output = A.InfinitePs(0.1,.3,.7)
     Final = A.TippettMethod(Output)
     SignOrNot = A.CombinedPvalue(Final)
-    print(Final, SignOrNot)
+    #print(Final, SignOrNot)
 
     #Test
     #random generator 10,12,15,18,20 N(mu,sigma^2) various values of mu and sigma^2
@@ -189,7 +190,7 @@ if __name__ == "__main__":
         Output = A.InfinitePs(Pvalues)
         #Get P values and combine
         Final = A.StoufferMethod(Output[0])
-        print(Final)
+        #print(Final)
         SignOrNot = A.CombinedPvalue(Final)
 
     #Testing functionality based on P values provided by Cheng and Sheng paper
@@ -199,11 +200,16 @@ if __name__ == "__main__":
     #Stouffer's test
     A = CountPs('Stouffer')
     StouffersOut = A.StoufferMethod(copy.deepcopy(Test[0]))
-    print(StouffersOut)
-    #Tippet's test
+    #print(StouffersOut)
+    
+    
+    #Fishers Test against metap_beckerp.csv data used in R tests
     A = CountPs('Fisher')
-    FishersOut = A.FisherMethod(PvalsFromPaper)
-    print(FishersOut)
+    Input = A.InfinitePs(0.016,0.067,0.25,0.405,0.871)
+    FishersOut = A.FisherMethod(Input)
+    SignOrNot = A.CombinedPvalue(FishersOut)
+    print(FishersOut, SignOrNot)
+
 
     
 

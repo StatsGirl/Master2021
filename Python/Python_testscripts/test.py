@@ -24,7 +24,7 @@ Output6 = A.TippettMethod(Input[0])
 #Testing using several of existing functions, mention that some do not follow the test statistics mentioned in 
 #Heard 2017 paper
 Fisher = ss.combine_pvalues(Input[0], "fisher")
-print(Fisher)
+print(Fisher," other package")
 
 def CombinedPvalue(output,Input):
         """
@@ -55,7 +55,7 @@ def CombinedPvalue(output,Input):
         return output
 
 SignOrNot = CombinedPvalue(output = Output3, Input = Input[0])
-print(Output3, SignOrNot) #TODO the test statistics are the same but the returned p-values are different
+print(Output3, SignOrNot, "my package") #TODO the test statistics are the same but the returned p-values are different
 
 
 
