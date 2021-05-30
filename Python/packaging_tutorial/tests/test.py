@@ -26,35 +26,8 @@ Output6 = A.TippettMethod(Input[0])
 Fisher = ss.combine_pvalues(Input[0], "fisher")
 print(Fisher," other package")
 
-def CombinedPvalue(output,Input):
-        """
-        Returns the p value of the combined pvalues based on the 
-        method selected
-        """
-        n = len(Input)
 
-        if cp.CountPs == 'Tippett':
-            output = output
-            output = beta.pdf(output,a = 1, b = n) #ST is Beta(1,n)
-        elif cp.CountPs == 'Stouffer':
-            output = output
-            output = norm.pdf(output,scale = n) #SS is N(0,n)
-        elif cp.CountPs == 'George':
-            output = output
-            output = gamma.pdf(output,a = n) #SG is Gamma(x,n)
-        elif cp.CountPs == 'Ed':
-            output = output
-            output = gamma.pdf(output,a = n) #SE is Gamma(x,n)
-        elif cp.CountPs == 'Pearson':
-            output = output
-            output = chi2.pdf(output,2*n) #SP is Chi-square df=2n
-        else:
-            output = output
-            output = chi2.pdf(output,2*n) #SF is Chi-square df=2n
-        
-        return output
-
-SignOrNot = CombinedPvalue(output = Output3, Input = Input[0])
+SignOrNot = cp.CombinedPvalue(output = Output3, Input = Input[0])
 print(Output3, SignOrNot, "my package") #TODO the test statistics are the same but the returned p-values are different
 
 
