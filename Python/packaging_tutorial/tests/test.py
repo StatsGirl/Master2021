@@ -12,14 +12,12 @@ print(input1['x'].values[0:5])
 A = cp.CountPs("Fisher") #name of statistic: Fisher, Pearson, Ed, Stouffer, George, Tippett
 inputs = list(input1['x'].values.flatten())
 Input = A.InfinitePs(inputs[0:5])
-Output1 = A.StoufferMethod(Input[0]) #TODO check this one, just wrong
-Output2 = A.GeorgeMethod(Input[0]) #TODO check this one, negative the ss. function is positive
+Output1 = A.StoufferMethod(Input[0]) 
+Output2 = A.GeorgeMethod(Input[0]) 
 Output3 = A.FisherMethod(Input[0]) 
-Output4 = A.PearsonMethod(Input[0]) #TODO check this one, negative the ss. function is positive
+Output4 = A.PearsonMethod(Input[0])
 Output5 = A.EdMethod(Input[0])
 Output6 = A.TippettMethod(Input[0])
-#print(Output6) #TODO the test statistic returned, need to convert it over to p-value based on distirbution.
-#Need new function to return p value
 
 #Testing using several of existing functions, mention that some do not follow the test statistics mentioned in 
 #Heard 2017 paper
@@ -28,7 +26,7 @@ print(Fisher," other package")
 
 
 SignOrNot = cp.CombinedPvalue(output = Output3, Input = Input[0])
-print(Output3, SignOrNot, "my package") #TODO the test statistics are the same but the returned p-values are different
+print(Output3, SignOrNot, "my package")
 
 
 
