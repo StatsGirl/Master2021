@@ -1,3 +1,4 @@
+#import P_CombiningPValuesFinal as cp
 import P_CombiningPValuesFinal as cp
 import pandas as pd
 import scipy.stats as ss
@@ -25,8 +26,9 @@ Fisher = ss.combine_pvalues(Input[0], "fisher")
 print(Fisher," other package")
 
 
-SignOrNot = cp.CombinedPvalue(output = Output3, Input = Input[0])
+SignOrNot = A.CombinedPvalue(output = Output3, Input = Input[0])
 print(Output3, SignOrNot, "my package")
+
 
 
 
