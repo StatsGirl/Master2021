@@ -26,7 +26,7 @@ Fisher = ss.combine_pvalues(Input[0], "fisher")
 print(Fisher," other package")
 
 
-SignOrNot = A.CombinedPvalue(output = Output3, Input = Input[0])
+SignOrNot = A.CombinedPvalue(output = Output3)
 print(Output3, SignOrNot, "my package")
 
 
