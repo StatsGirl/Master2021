@@ -63,8 +63,8 @@ class CountPs:
                 List = output
                 temp = []
                 for x in List:
-                    temp.append(-mt.log(1 - x))
-                temp1 = sum(temp)
+                    temp.append(mt.log(1 - x))
+                temp1 = -sum(temp)
                 output = -2 * temp1 #-2SP is distributed chisquare 2 ddof
 
         return output

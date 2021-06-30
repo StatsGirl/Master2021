@@ -31,7 +31,7 @@ CombinedPValueMethod = function(x,name){
     return(outputs)
   }
   else if (name == "Ed"){
-    outputs <- dnorm(x,sd=n)
+    outputs <- dgamma(x,shape=n)
     return(outputs)
   }
   else if (name == "Stouffer"){
