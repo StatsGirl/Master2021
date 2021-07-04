@@ -19,11 +19,11 @@ CombinedPValueMethod = function(x,name){
 
 
   if (name == "Tippett"){
-    outputs <- dbeta(x, shape1 = 1, shape2 = n)
+    outputs <- 1-(1-x)**n#pbeta(x, shape1 = 1, shape2 = n)
     return(outputs)
   }
   else if (name == "George"){
-    outputs <- dnorm(x,sd=n)
+    outputs <- dt(x,df=n)
     return(outputs)
   }
   else if (name == "Pearson"){

@@ -29,7 +29,7 @@ class CountPs:
     def __init__(self, method):
         self.method = method
 
-    def InfinitePs(self, *args):
+    def SumOfPs(self, *args):
         """
         Select n number of p-values to use with desired method
         enter p values into args parameter
@@ -80,7 +80,7 @@ class CountPs:
                 for x in List:
                     temp.append(mt.log(x/(1 - x)))
                 temp1 = sum(temp)
-                output = temp1 #SG is distributed Gamma or Gaussian distribution #TODO ask Dr George if Gamma distirbution or gaussian
+                output = temp1 #SG is distributed t distribution
 
         return output
 
@@ -136,19 +136,19 @@ class CountPs:
 
         if self.method == 'Tippett':
             self.output = output
-            output = beta.pdf(output,a = 1, b = self.n) #ST is Beta(1,n)
+            output = 1-(1-output)**self.n#beta.pdf(output,a = 1, b = self.n) #ST is Beta(1,n)
         elif self.method == 'Stouffer':
             self.output = output
             output = norm.pdf(output,scale = self.n) #SS is N(0,n)
         elif self.method == 'George':
             self.output = output
-            output = gamma.pdf(output,a = self.n) #SG is Gamma(x,n)
+            output = t.pdf(output,self.n) #SG is Student t distribution (n)
         elif self.method == 'Ed':
             self.output = output
             output = gamma.pdf(output,a = self.n) #SE is Gamma(x,n)
         elif self.method == 'Pearson':
             self.output = output
-            output = chi2.pdf(output,2*self.n) #SP is Chi-square df=2n
+            output = chi2.cdf(output,2*self.n) #SP is Chi-square df=2n
         else:
             self.output = output
             output = chi2.pdf(output,2*self.n) #SF is Chi-square df=2n
@@ -159,7 +159,7 @@ class CountPs:
 if __name__ == "__main__":
  
     A = CountPs('Tippett') #Fisher, Pearson, Ed, Stouffer, George, Tippett
-    Output = A.InfinitePs(0.1,.3,.7)
+    Output = A.SumOfPs(0.1,.3,.7)
     Final = A.TippettMethod(Output)
     SignOrNot = A.CombinedPvalue(Final)
     #print(Final, SignOrNot)
@@ -173,7 +173,7 @@ if __name__ == "__main__":
     for x in List:
         Various = np.random.normal(mu, sigma, x)
         Pvalues = norm.cdf(Various)
-        Output = A.InfinitePs(Pvalues)
+        Output = A.SumOfPs(Pvalues)
         #Get P values and combine
         Final = A.StoufferMethod(Output[0])
         #print(Final)
@@ -189,7 +189,7 @@ if __name__ == "__main__":
     for x in List:
         Various = t.rvs(x-1, size = x)
         Pvalues = t.cdf(Various,x-1)
-        Output = A.InfinitePs(Pvalues)
+        Output = A.SumOfPs(Pvalues)
         #Get P values and combine
         Final = A.StoufferMethod(Output[0])
         #print(Final)
@@ -197,7 +197,7 @@ if __name__ == "__main__":
 
     #Testing functionality based on P values provided by Cheng and Sheng paper
     
-    Test = A.InfinitePs(PvalsFromPaper)
+    Test = A.SumOfPs(PvalsFromPaper)
     print(Test)
     #Stouffer's test
     A = CountPs('Stouffer')
@@ -206,11 +206,11 @@ if __name__ == "__main__":
     
     
     #Fishers Test against metap_beckerp.csv data used in R tests
-    A = CountPs('Fisher')
-    Input = A.InfinitePs(0.016,0.067,0.25,0.405,0.871)
-    FishersOut = A.FisherMethod(Input)
-    SignOrNot = A.CombinedPvalue(FishersOut)
-    print(FishersOut, SignOrNot)
+    A = CountPs('Pearson')
+    Input = A.SumOfPs(0.016,0.067,0.25,0.405,0.871)
+    TippettOut = A.PearsonMethod(Input)
+    SignOrNot = A.CombinedPvalue(TippettOut)
+    print(TippettOut, SignOrNot)
 
 
     
