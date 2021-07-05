@@ -7,7 +7,7 @@
 #'
 #' @return Combined P-value
 #' @examples
-#' Output <- InfinitePs(0.1,0.3,.7)
+#' Output <- SumOfPs(0.1,0.3,.7)
 #' Final <- PearsonsMethod(Output)
 #' @export
 #' @importFrom dplyr "%>%"

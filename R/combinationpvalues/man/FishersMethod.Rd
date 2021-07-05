@@ -7,7 +7,7 @@
 FishersMethod(x)
 }
 \arguments{
-\item{x}{#' InfinitePs}
+\item{x}{#' SumOfPs}
 }
 \value{
 Combined P-value
@@ -17,6 +17,6 @@ Combined P-value
 Summation i=1 to n log of pi where p equals p-value
 }
 \examples{
-Output <- InfinitePs(0.1,0.3,.7)
+Output <- SumOfPs(0.1,0.3,.7)
 Final <- FishersMethod(Output)
 }

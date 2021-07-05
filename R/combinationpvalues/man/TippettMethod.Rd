@@ -7,7 +7,7 @@
 TippettMethod(x)
 }
 \arguments{
-\item{x}{#' InfinitePs}
+\item{x}{#' SumOfPs}
 }
 \value{
 Combined P-value
@@ -17,6 +17,6 @@ Combined P-value
 min(p1,...,pn), n= 2,3,...,k where p equals p-value
 }
 \examples{
-Output <- InfinitePs(0.1,0.3,.7)
+Output <- SumOfPs(0.1,0.3,.7)
 Final <- TippettMethod(Output)
 }

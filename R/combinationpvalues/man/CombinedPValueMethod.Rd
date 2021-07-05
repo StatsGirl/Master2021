@@ -18,7 +18,7 @@ Combined P-value
 #' Input is the test statistic of the previous method selected and it returns the combined p-value
 }
 \examples{
-Output <- InfinitePs(0.1,0.3,.7)
+Output <- SumOfPs(0.1,0.3,.7)
 Final <- TippettMethod(Output)
 Combined <- CombinedPValueMethod(Final,"Tippett")
 }
