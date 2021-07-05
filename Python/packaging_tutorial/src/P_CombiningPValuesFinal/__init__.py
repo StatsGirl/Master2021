@@ -206,9 +206,9 @@ if __name__ == "__main__":
     
     
     #Fishers Test against metap_beckerp.csv data used in R tests
-    A = CountPs('Pearson')
+    A = CountPs('Tippett')
     Input = A.SumOfPs(0.016,0.067,0.25,0.405,0.871)
-    TippettOut = A.PearsonMethod(Input)
+    TippettOut = A.TippettMethod(Input)
     SignOrNot = A.CombinedPvalue(TippettOut)
     print(TippettOut, SignOrNot)
 
