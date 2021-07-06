@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="P_CombiningPValuesFinal",
-    version="0.1.3",
+    version="0.1.3.2",
     author="Breya McGlown",
     author_email="bswlker2@memphis.edu",
     description="Six fundamental statistics and combination p value functionality",

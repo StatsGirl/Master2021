@@ -22,6 +22,6 @@ GeorgeMethod = function(x) {
             k <- k + 1
             }
             temp1 <- Reduce("+",temp)
-            output <- temp1
+            output <- -1* temp1
             return(output)
             }

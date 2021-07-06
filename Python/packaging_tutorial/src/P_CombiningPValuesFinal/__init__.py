@@ -8,7 +8,7 @@
 #Author: Breya McGlown
 #Math Master's Thesis
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 import numpy as np
 import copy
@@ -49,8 +49,8 @@ class CountPs:
             temp = []
             for x in List:
                 temp.append(mt.log(x))
-            temp1 = sum(temp)
-            output = -2 * temp1 #-2SF is distributed chisquare 2 ddof
+            temp1 = -2* sum(temp)
+            output = temp1 #-2SF is distributed chisquare 2 ddof
 
         return output
 
@@ -64,8 +64,8 @@ class CountPs:
                 temp = []
                 for x in List:
                     temp.append(mt.log(1 - x))
-                temp1 = -sum(temp)
-                output = -2 * temp1 #-2SP is distributed chisquare 2 ddof
+                temp1 = -2* sum(temp)
+                output = temp1 #-2SP is distributed chisquare 2 ddof
 
         return output
 
@@ -79,7 +79,7 @@ class CountPs:
                 temp = []
                 for x in List:
                     temp.append(mt.log(x/(1 - x)))
-                temp1 = sum(temp)
+                temp1 = -1 * sum(temp) #SF-SP
                 output = temp1 #SG is distributed t distribution
 
         return output

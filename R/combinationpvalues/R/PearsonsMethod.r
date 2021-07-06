@@ -18,7 +18,7 @@ PearsonsMethod = function(x) {
             Len<- length(x)
             temp <-vector("list",Len)
             for (i in x) {
-            temp[[k]]<- (-(log(1-i)))
+            temp[[k]]<- ((log(1-i)))
             k <- k + 1
             }
             temp1 <- Reduce("+",temp)

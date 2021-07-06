@@ -14,7 +14,7 @@ Combined P-value
 }
 \description{
 #' Combination p-value method that uses Fishers statistic
-Summation i=1 to n log of pi where p equals p-value
+Summation i=1 to K log of pi where p equals p-value
 }
 \examples{
 Output <- SumOfPs(0.1,0.3,.7)
