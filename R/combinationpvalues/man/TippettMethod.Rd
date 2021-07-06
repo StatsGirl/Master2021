@@ -14,7 +14,7 @@ Combined P-value
 }
 \description{
 #' Combination p-value method that uses Tippett statistic
-min(p1,...,pn), K>= 2 where p equals p-value
+min(p1,...,pn), n= 2,3,...,k where p equals p-value
 }
 \examples{
 Output <- SumOfPs(0.1,0.3,.7)
